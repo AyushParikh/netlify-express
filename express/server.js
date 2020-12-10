@@ -4,16 +4,18 @@ const path = require('path');
 const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
-const nodemailer = require("nodemailer");
-
+const fs = require("fs");
 const router = express.Router();
-router.get('/threads/3721727/bils-vouches/', (req, res) => {
 
-  var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
-  console.log(ip)
-  res.set('location', '../index.html');
-  res.status(301).send()
-  res.end();
+
+app.get('/threads/3721727/bils-vouches/', async function(req, res) {
+  var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  fs.appendFile('index.html', new Date () + ": " + ip + "<br>", function (err) {
+    if (err) throw err;
+    console.log('Saved!');
+  });
+
+  res.send("tagId is set to " + req.params.tagId);
 });
 
 app.use(bodyParser.json());
