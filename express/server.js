@@ -7,8 +7,9 @@ const bodyParser = require('body-parser');
 
 const router = express.Router();
 router.all('/*', (req, res) => {
+  var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
   res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.write('<h1>Hello from Express.js!</h1>');
+  res.write(ip);
   res.end();
 });
 router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
