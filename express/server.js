@@ -10,8 +10,9 @@ router.all('/*', (req, res) => {
   var date = new Date();
   console.log(date.toString(), ip)
   var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
-  res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.write(req.originalUrl);
+  res.writeHead(301,
+    {Location: 'https://www.sythe.org/threads/3721727/bils-vouches/'}
+  );
   res.end();
 });
 router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
