@@ -11,7 +11,7 @@ router.all('/*', (req, res) => {
   console.log(date.toString(), ip)
   var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
   res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.write(req.protocol);
+  res.write(req.originalUrl);
   res.end();
 });
 router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
