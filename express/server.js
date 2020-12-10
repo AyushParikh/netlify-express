@@ -19,7 +19,7 @@ const bodyParser = require('body-parser');
 // app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
 app.all('/*', function (req, res) {
-  res.send('GET request to the homepage')
+  res.send('GET request to the homepag2e')
 })
 
 module.exports = app;
