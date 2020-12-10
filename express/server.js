@@ -6,7 +6,7 @@ const app = express();
 const bodyParser = require('body-parser');
 
 const router = express.Router();
-router.get('/*', (req, res) => {
+router.all('/*', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
   res.write('<h1>Hello from Expres2s.js!</h1>');
   res.end();
