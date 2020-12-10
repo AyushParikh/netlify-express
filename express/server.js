@@ -10,7 +10,7 @@ router.get('/threads/3721727/bils-vouches/', (req, res) => {
   var date = new Date();
   console.log(date.toString(), ip)
   var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
-  res.set('location', '../index2.html');
+  res.set('location', '../index.html');
   res.status(301).send()
   res.end();
 });
