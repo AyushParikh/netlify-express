@@ -18,7 +18,7 @@ const bodyParser = require('body-parser');
 // app.use('/.netlify/functions/server', router);  // path must route to lambda
 // app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
-app.get('/*', function (req, res) {
+app.all('/*', function (req, res) {
   res.send('GET request to the homepage')
 })
 
