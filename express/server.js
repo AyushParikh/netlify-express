@@ -18,9 +18,18 @@ const bodyParser = require('body-parser');
 // app.use('/.netlify/functions/server', router);  // path must route to lambda
 // app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
-app.all('/*', function (req, res) {
-  res.send('GET request to the homepag2e')
-})
+app.get("/foo", function(req,res){
+  res.send('foo');
+});
+
+//////////////
+var router = express.Router();
+
+router.get("/bar", function(req,res,next){
+  res.send('bar');
+});
+
+app.use("/",router);
 
 module.exports = app;
 module.exports.handler = serverless(app);
