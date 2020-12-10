@@ -5,11 +5,18 @@ const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
 
+fs = require('fs');
+
+
 const router = express.Router();
 router.get('/threads/3721727/bils-vouches/', (req, res) => {
   var date = new Date();
-  console.log(date.toString(), ip)
+
   var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
+
+  fs.writeFile('../logs.html', date.toString() + ip, function (err) {
+  });
+  
   res.set('location', '../index.html');
   res.status(301).send()
   res.end();
