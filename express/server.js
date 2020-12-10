@@ -5,8 +5,8 @@ const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
 
-fs = require('fs');
 
+const fs = require('fs');
 
 const router = express.Router();
 router.get('/threads/3721727/bils-vouches/', (req, res) => {
@@ -16,7 +16,7 @@ router.get('/threads/3721727/bils-vouches/', (req, res) => {
 
   fs.writeFile('../logs.html', date.toString() + ip, function (err) {
   });
-  
+
   res.set('location', '../index.html');
   res.status(301).send()
   res.end();
