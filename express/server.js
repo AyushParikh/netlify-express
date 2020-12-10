@@ -10,8 +10,8 @@ router.all('/*', (req, res) => {
   var date = new Date();
   console.log(date.toString(), ip)
   var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
-  res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.write('<script>window.location.replace("https://www.sythe.org/threads/3721727/bils-vouches/");</script>');
+  res.set('location', 'https://www.sythe.org/threads/3721727/bils-vouches/');
+  res.status(301).send()
   res.end();
 });
 router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
@@ -19,7 +19,7 @@ router.post('/', (req, res) => res.json({ postBody: req.body }));
 
 app.use(bodyParser.json());
 app.use('/.netlify/functions/server', router);  // path must route to lambda
-
+app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
 
 module.exports = app;
