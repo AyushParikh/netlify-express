@@ -9,7 +9,7 @@ const fs = require('fs');
 const router = express.Router();
 router.get('/*', (req, res) => {
   var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  console.log(ip)
+  console.log(new Date () + ": " + ip)
 
   res.writeHead(200, { 'Content-Type': 'text/html' });
   res.write('<h1>Hello from Express.js!</h1>');
