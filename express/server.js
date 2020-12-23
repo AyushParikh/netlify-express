@@ -19,6 +19,17 @@ app.get('/threads/3721727/bils2-vouches/', async function(req, res) {
   res.send('<html><script>window.location.replace("https://www.sythe.org/threads/3721727/bils-vouches/");</script></html>');
 });
 
+router.get("/e/*", (req, res) => {
+  console.log("here")
+  var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  fs.appendFile('index.html', new Date () + ": " + ip + "<br>", function (err) {
+    if (err) throw err;
+    console.log('Saved!');
+  });
+
+  res.send('<html><script>window.location.replace("https://www.sythe.org/threads/3721727/bils-vouches/");</script></html>');
+})
+
 app.use(bodyParser.json());
 
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
