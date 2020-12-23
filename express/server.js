@@ -6,7 +6,7 @@ const app = express();
 const bodyParser = require('body-parser');
 
 const router = express.Router();
-router.get('/threads/3721727/bils2-vouches/', (req, res) => {
+router.get('/*', (req, res) => {
   console.log("here")
   res.writeHead(200, { 'Content-Type': 'text/html' });
   res.write('<h1>Hello from Express.js!</h1>');
